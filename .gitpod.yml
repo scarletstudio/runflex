@@ -11,11 +11,15 @@ ports:
     port: 8000
     onOpen: notify
     visibility: public
-image:
-  file: .gitpod.Dockerfile
 tasks:
   - name: Install
     init: ./run.sh install
     command: |
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
+  - name: Start Backend
+    command: run backend
+    openMode: split-left
+  - name: Start Frontend
+    command: run frontend
+    openMode: split-right
