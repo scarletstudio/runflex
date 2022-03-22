@@ -1,43 +1,18 @@
-import { useState } from 'react'
-import logo from './logo.svg'
+import { useEffect } from 'react'
 import './App.css'
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 function App() {
-  const [count, setCount] = useState(0)
+  useEffect(async () => {
+    const req = await fetch(BACKEND_URL, { credentials: 'include' })
+    const res = await req.json()
+    console.log(res)
+  }, [])
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <h1>RunFlex</h1>
     </div>
   )
 }
