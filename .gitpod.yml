@@ -11,14 +11,10 @@ ports:
     port: 8000
     onOpen: notify
     visibility: public
+image:
+  file: .gitpod.Dockerfile
 tasks:
   - name: Install
-    init: |
-      cd frontend
-      npm install
-      cd ../backend
-      pip3 install -r requirements.txt
-      cd ..
     command: |
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
