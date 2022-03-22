@@ -15,10 +15,7 @@ image:
   file: .gitpod.Dockerfile
 tasks:
   - name: Install
-    init: |
-      cd frontend
-      npm install
-      cd ..
+    init: ./run.sh install
     command: |
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
