@@ -34,6 +34,10 @@ elif [ "$1" == "install-backend" ]; then
   # Install Python dependencies in workspace so that GitPod persists them
   pip3 install -r backend/requirements.txt
 
+elif [ "$1" == "gp-preview" ]; then
+  # Open the frontend in the GitPod preview window
+  gp preview $(gp url 3000)
+
 else
   echo "No run shortcut found for: $1"
   echo "Did you pull the latest version?"
