@@ -15,7 +15,7 @@ tasks:
   - name: Install
     init: |
       ./run.sh install-frontend
-      pip3 install -r backend/requirements.txt
     command: |
+      ./run.sh install-backend
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
