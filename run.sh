@@ -23,16 +23,16 @@ elif [ "$1" == "frontend" ]; then
   # Run the frontend in development mode
   npm run dev
 
-elif [ "$1" == "install" ]; then
+elif [ "$1" == "install-frontend" ]; then
   echo "Installing frontend dependencies..."
   # Install Node dependencies within frontend directory
   cd frontend
   npm install
-  cd ..
+
+elif [ "$1" == "install-backend" ]; then
   echo "Installing backend dependencies..."
   # Install Python dependencies in workspace so that GitPod persists them
   pip3 install -r backend/requirements.txt
-  echo "Done."
 
 else
   echo "No run shortcut found for: $1"

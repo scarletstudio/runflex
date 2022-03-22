@@ -13,7 +13,9 @@ ports:
     visibility: public
 tasks:
   - name: Install
-    init: ./run.sh install
+    init: |
+      ./run.sh install-frontend
+      pip3 install -r backend/requirements.txt
     command: |
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
