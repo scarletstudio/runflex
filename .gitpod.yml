@@ -18,8 +18,8 @@ tasks:
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
   - name: Start Backend
-    command: run backend
+    command: ./run.sh backend
     openMode: split-left
   - name: Start Frontend
-    command: run frontend
+    command: ./run.sh frontend
     openMode: split-right
