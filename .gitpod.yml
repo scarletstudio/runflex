@@ -13,6 +13,5 @@ ports:
     visibility: public
 tasks:
   - init: |
-      ./install.sh
-      source .bash_aliases
-
+      ./run.sh install
+      cat .bash_aliases >> ~/.bashrc

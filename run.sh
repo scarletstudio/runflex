@@ -18,6 +18,17 @@ elif [ "$1" == "frontend" ]; then
   # Run the app in development mode
   npm run dev
 
+elif [ "$1" == "install" ]; then
+  echo "Installing frontend dependencies..."
+  cd frontend
+  npm install
+  cd ..
+  echo "Installing backend dependencies..."
+  cd backend
+  pip3 install -r requirements.txt
+  cd ..
+  echo "Done."
+
 else
   echo "No run shortcut found for: $1"
   echo "Did you pull the latest version?"
