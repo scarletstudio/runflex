@@ -6,6 +6,11 @@ set -e
 if [ "$1" == "backend" ]; then
   echo "Starting backend..."
   cd backend
+  # Set the Django secret key and save as an environment variable
+  gp env SECRET_KEY=$RANDOM
+  eval $(gp env -e)
+  echo "SECRET_KEY=$SECRET_KEY" > .env
+  # Run the backend in development mode
   ./start.sh "${@:2}"
   
 elif [ "$1" == "frontend" ]; then
@@ -15,7 +20,7 @@ elif [ "$1" == "frontend" ]; then
   gp env VITE_BACKEND_URL=$(gp url 8000)
   eval $(gp env -e)
   echo "VITE_BACKEND_URL=$VITE_BACKEND_URL" > .env
-  # Run the app in development mode
+  # Run the frontend in development mode
   npm run dev
 
 elif [ "$1" == "install" ]; then
