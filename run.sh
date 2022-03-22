@@ -25,13 +25,13 @@ elif [ "$1" == "frontend" ]; then
 
 elif [ "$1" == "install" ]; then
   echo "Installing frontend dependencies..."
+  # Install Node dependencies within frontend directory
   cd frontend
   npm install
   cd ..
   echo "Installing backend dependencies..."
-  cd backend
-  pip3 install -r requirements.txt
-  cd ..
+  # Install Python dependencies in workspace so that GitPod persists them
+  pip3 install -r backend/requirements.txt
   echo "Done."
 
 else
