@@ -13,7 +13,6 @@ def hello(request):
   """
   Returns a friendly welcome message.
   """
-  print("Received request.")
   return JsonResponse(
     {
       "success": True,

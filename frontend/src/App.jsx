@@ -5,7 +5,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function App() {
   useEffect(async () => {
-    const req = await fetch(BACKEND_URL, { credentials: 'include' })
+    const req = await fetch(BACKEND_URL)
     const res = await req.json()
     console.log(res)
   }, [])

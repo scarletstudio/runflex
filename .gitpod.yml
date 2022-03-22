@@ -14,7 +14,5 @@ ports:
 tasks:
   - init: |
       ./install.sh
-      gp env VITE_BACKEND_URL=$(gp url 8000)
-      eval $(gp env -e)
-      echo "VITE_BACKEND_URL=$VITE_BACKEND_URL" > frontend/.env
+      source .bash_aliases
 
