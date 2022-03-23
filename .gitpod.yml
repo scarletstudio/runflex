@@ -9,6 +9,7 @@ ports:
     visibility: public
   - name: Backend
     port: 8000
+    onOpen: ignore
     visibility: public
 tasks:
   - name: Frontend
@@ -21,6 +22,7 @@ tasks:
     command: |
       source .bash_aliases
       ./run.sh install-backend
+      ./run.sh manage load
       ./run.sh backend
     openMode: split-left
   - name: Terminal
