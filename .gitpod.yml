@@ -22,6 +22,7 @@ tasks:
     command: |
       source .bash_aliases
       ./run.sh install-backend
+      ./run.sh manage migrate
       ./run.sh manage load
       ./run.sh backend
     openMode: split-left

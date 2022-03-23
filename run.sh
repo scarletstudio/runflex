@@ -11,7 +11,8 @@ if [ "$1" == "backend" ]; then
   eval $(gp env -e)
   echo "SECRET_KEY=$SECRET_KEY" > .env
   # Run the backend in development mode
-  ./start.sh "${@:2}"
+  python3 manage.py migrate
+  python3 manage.py runserver
   
 elif [ "$1" == "frontend" ]; then
   echo "Starting frontend app..."
