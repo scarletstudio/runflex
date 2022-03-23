@@ -4,7 +4,7 @@
 
 .AllRunsPage .SidePanel {
   width: var(--side-panel-width);
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.01);
 }
 
 .AllRunsPage .MainPanel {
