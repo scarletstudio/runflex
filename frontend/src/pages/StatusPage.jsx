@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useFetchJson } from '../common/utils';
-
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+import { useBackendFetchJson } from '../common/utils';
 
 export default function StatusPage() {
-  const status = useFetchJson(BACKEND_URL)
+  const status = useBackendFetchJson('/')
 
   return (
-    <div className="StatusPage">
+    <div className="StatusPage MainPanel Page">
       <h2>Status</h2>
       <p>What is the status of the backend?</p>
       <p>Let us check:</p>

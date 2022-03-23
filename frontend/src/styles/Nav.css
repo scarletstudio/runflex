@@ -1,0 +1,16 @@
+.Nav {
+  background: black;
+  height: var(--nav-height);
+  padding: var(--nav-padding);
+  font-size: var(--nav-height);
+}
+
+.Nav a {
+  margin: calc(var(--nav-padding) / 2);
+  color: white;
+  text-decoration: none;
+}
+
+.Nav a:hover {
+  text-decoration: dashed;
+}

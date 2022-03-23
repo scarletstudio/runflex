@@ -1,0 +1,26 @@
+.Layout {
+  --font-size: 18px;
+  --nav-height: var(--font-size);
+  --nav-padding: 0.5em;
+  --nav-total-height: calc(var(--nav-height) + 2 * var(--nav-padding));
+}
+
+.Page {
+  padding: 0 1em;
+}
+
+.SidePanel, .MainPanel {
+  display: inline-block;
+  vertical-align: top;
+  font-size: var(--font-size);
+}
+
+.SidePanel {
+  width: 10%;
+  /* Fill only the height left after the nav */
+  height: calc(100vh - var(--nav-total-height));
+}
+
+.SidePanel + .MainPanel {
+  width: 90%;
+}

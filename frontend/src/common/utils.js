@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react'
 
-export function useFetchJson(url, options = {}, deps = []) {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
+export function useRawFetchJson({
+  url,
+  options = {},
+  deps = []
+}) {
   const [ response, setResponse ] = useState(null)
   useEffect(async () => {
     const req = await fetch(url, options)
@@ -8,4 +14,11 @@ export function useFetchJson(url, options = {}, deps = []) {
     setResponse(res)
   }, deps)
   return response
+}
+
+export function useBackendFetchJson(route, args = {}) {
+  return useRawFetchJson({
+    url: `${BACKEND_URL}${route}`,
+    ...args,
+  })
 }

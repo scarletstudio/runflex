@@ -1,11 +1,41 @@
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
+import '../styles/AllRunsPage.css'
 
-export default function AllRunsPage(props) {
+function RunItem({ data }) {
+  const { id, name } = data
   return (
-    <div className="AllRunPage">
-      <h1>Runs</h1>
-      <p>All runs will appear here.</p>
-      <Outlet />
+    <div className="RunItem">
+      <p>
+        <Link to={`/runs/${id}`}>{name}</Link>
+      </p>
+    </div>
+  )
+}
+
+function AllRuns({ data }) {
+  return (
+    <div className="AllRuns">
+      {data.map((runData) => (
+        <RunItem key={runData.id} data={runData} />
+      ))}
+    </div>
+  )
+}
+
+export default function AllRunsPage() {
+  const allRuns = [
+    { id: 101, name: 'Sunday Run' },
+    { id: 102, name: 'My First Run' },
+    { id: 103, name: 'Simple Jog' },
+  ]
+  return (
+    <div className="AllRunsPage">
+      <div className="SidePanel">
+        <AllRuns data={allRuns} />
+      </div>
+      <div className="MainPanel">
+        <Outlet />
+      </div>
     </div>
   )
 }

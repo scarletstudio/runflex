@@ -1,0 +1,20 @@
+.AllRunsPage {
+  --side-panel-width: 120px;
+}
+
+.AllRunsPage .SidePanel {
+  width: var(--side-panel-width);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.AllRunsPage .MainPanel {
+  width: calc(100% - var(--side-panel-width));
+}
+
+.AllRuns {
+  padding: 0.5em;
+}
+
+.AllRuns .RunItem {
+  margin: 0.25em;
+}
