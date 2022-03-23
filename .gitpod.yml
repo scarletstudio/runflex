@@ -12,10 +12,16 @@ ports:
     onOpen: notify
     visibility: public
 tasks:
-  - name: Install
-    init: |
-      ./run.sh install-frontend
+  - name: Start Frontend
+    init: ./run.sh install-frontend
+    command: ./run.sh frontend
+    openMode: split-right
+  - name: Start Backend
     command: |
       ./run.sh install-backend
+      ./run.sh backend
+    openMode: split-left
+  - name: Set Aliases
+    command: |
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc
