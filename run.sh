@@ -34,7 +34,7 @@ elif [ "$1" == "install-backend" ]; then
   # Install Python dependencies in workspace so that GitPod persists them
   pip3 install -r backend/requirements.txt
 
-elif [ "$1" == "gp-preview" ]; then
+elif [ "$1" == "preview" ]; then
   # Open the frontend in the GitPod preview window
   gp preview $(gp url 3000)
 

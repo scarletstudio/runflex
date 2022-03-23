@@ -9,7 +9,6 @@ ports:
     visibility: public
   - name: Backend
     port: 8000
-    onOpen: notify
     visibility: public
 tasks:
   - name: Frontend
