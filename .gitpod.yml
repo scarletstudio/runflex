@@ -5,23 +5,23 @@
 ports:
   - name: Frontend
     port: 3000
-    onOpen: notify
+    onOpen: open-preview
     visibility: public
   - name: Backend
     port: 8000
     onOpen: notify
     visibility: public
 tasks:
-  - name: Start Frontend
+  - name: Frontend
     init: ./run.sh install-frontend
     command: ./run.sh frontend
     openMode: split-right
-  - name: Start Backend
+  - name: Backend
     command: |
       ./run.sh install-backend
       ./run.sh backend
     openMode: split-left
-  - name: Set Aliases
+  - name: Terminal
     command: |
       cat .bash_aliases >> ~/.bashrc
       source ~/.bashrc

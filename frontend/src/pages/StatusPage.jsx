@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useBackendFetchJson } from '../common/utils';
 
 export default function StatusPage() {
-  const status = useBackendFetchJson('/')
+  const status = useBackendFetchJson({ route: '/' })
 
   return (
     <div className="StatusPage MainPanel Page">

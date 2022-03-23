@@ -16,7 +16,7 @@ export function useRawFetchJson({
   return response
 }
 
-export function useBackendFetchJson(route, args = {}) {
+export function useBackendFetchJson({ route, ...args }) {
   return useRawFetchJson({
     url: `${BACKEND_URL}${route}`,
     ...args,
