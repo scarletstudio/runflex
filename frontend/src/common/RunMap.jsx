@@ -4,12 +4,19 @@ import 'leaflet/dist/leaflet.css';
 const ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`
 const TILE = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
 
+function choose(compare, prev, curr) {
+  return prev ? compare(prev, curr) : curr
+}
+
 function getBounds(path) {
-  const bounds = path.reduce((agg, { lat, lon }) => ({
-    latMin: agg.latMin ? Math.min(agg.latMin, lat) : lat,
-    lonMin: agg.lonMin ? Math.min(agg.lonMin, lon) : lon,
-    latMax: agg.latMax ? Math.max(agg.latMax, lat) : lat,
-    lonMax: agg.lonMax ? Math.max(agg.lonMax, lon) : lon,
+  if (path.length === 0) {
+    return [[0, 0], [0, 0]]
+  }
+  const bounds = path.reduce((agg, { latitude, longitude }) => ({
+    latMin: choose(Math.min, agg.latMin, latitude),
+    lonMin: choose(Math.min, agg.lonMin, longitude),
+    latMax: choose(Math.max, agg.latMax, latitude),
+    lonMax: choose(Math.max, agg.lonMax, longitude),
   }), {})
   const { latMin, lonMin, latMax, lonMax } = bounds
   return [
@@ -18,7 +25,9 @@ function getBounds(path) {
   ]
 }
 
-const getPositions = (path) => path.map(({ lat, lon }) => ([lat, lon]))
+const getPositions = (path) => path.map(({ latitude, longitude }) => (
+  [latitude, longitude]
+))
 
 export default function RunMap(props) {
   const { path, pathOptions } = props

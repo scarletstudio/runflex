@@ -38,6 +38,14 @@ elif [ "$1" == "preview" ]; then
   # Open the frontend in the GitPod preview window
   gp preview $(gp url 3000)
 
+elif [ "$1" == "api" ]; then
+  # Open the backend in the GitPod preview window
+  gp preview $(gp url 8000)
+
+elif [ "$1" == "manage" ]; then
+  cd backend
+  python3 manage.py "${@:2}"
+
 else
   echo "No run shortcut found for: $1"
   echo "Did you pull the latest version?"

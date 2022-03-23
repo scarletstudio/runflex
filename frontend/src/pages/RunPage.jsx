@@ -19,15 +19,20 @@ export default function RunPage() {
     )
   }
 
-  const runData = useBackendFetchJson({
+  const res = useBackendFetchJson({
     route: `/run/${runId}`,
     deps: [runId],
   })
+  const runMapComponent = res?.tracks
+    ? (
+      <RunMap key={runId} path={res?.tracks || []} pathOptions={PATH_OPTIONS} />
+    ) : null
+  
   return (
     <div className="RunPage Page">
       <h2>Runs</h2>
-      <p>Run ID: {runData?.id}</p>
-      <RunMap path={mockPath} pathOptions={PATH_OPTIONS} />
+      <p>Run ID: {res?.id}</p>
+      {runMapComponent}
     </div>
   )
 }

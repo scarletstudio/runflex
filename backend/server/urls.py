@@ -19,6 +19,9 @@ from . import views
 
 urlpatterns = [
   path("", views.hello),
+  path("status/", views.hello),
+  path("all_runners/", views.all_runners_view),
+  path("all_runs/<str:runner_id>/", views.all_runs_view),
   path("run/<str:id>/", views.run_view),
   path("runner/<str:id>/", views.runner_view),
 ]

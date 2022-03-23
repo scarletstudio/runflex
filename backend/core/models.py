@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.db import models
 
 
@@ -8,10 +9,17 @@ class Runner(models.Model):
   
 class Run(models.Model):
   id = models.CharField(max_length=30, primary_key=True)
+  runner = models.CharField(max_length=30, default="")
+  location = models.CharField(max_length=60, blank=True, null=True)
+  start_time = models.DateTimeField(default=datetime.now, blank=True)
 
 
 class Track(models.Model):
   id = models.CharField(max_length=30, primary_key=True)
-  run = models.ForeignKey(Run, on_delete=models.CASCADE)
-  runner = models.ForeignKey(Runner, on_delete=models.CASCADE)
-
+  run = models.CharField(max_length=30)
+  runner = models.CharField(max_length=30)
+  index = models.IntegerField(default=0)
+  time = models.DateTimeField(default=datetime.now, blank=True)
+  latitude = models.FloatField(blank=True, null=True)
+  longitude = models.FloatField(blank=True, null=True)
+  elevation = models.FloatField(blank=True, null=True)

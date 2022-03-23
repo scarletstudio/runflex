@@ -1,12 +1,15 @@
 import { Link, Outlet } from "react-router-dom"
+import { useBackendFetchJson } from '../common/utils'
 import '../styles/AllRunsPage.css'
 
+const RUNNER_ID = '114650'
+
 function RunItem({ data }) {
-  const { id, name } = data
+  const { id, location } = data
   return (
     <div className="RunItem">
       <p>
-        <Link to={`/runs/${id}`}>{name}</Link>
+        <Link to={`/runs/${id}`}>{location}</Link>
       </p>
     </div>
   )
@@ -23,15 +26,13 @@ function AllRuns({ data }) {
 }
 
 export default function AllRunsPage() {
-  const allRuns = [
-    { id: 101, name: 'Sunday Run' },
-    { id: 102, name: 'My First Run' },
-    { id: 103, name: 'Simple Jog' },
-  ]
+  const res = useBackendFetchJson({
+    route: `/all_runs/${RUNNER_ID}`
+  })
   return (
     <div className="AllRunsPage">
       <div className="SidePanel">
-        <AllRuns data={allRuns} />
+        <AllRuns data={res?.runs || []} />
       </div>
       <div className="MainPanel">
         <Outlet />
