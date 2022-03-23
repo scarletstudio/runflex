@@ -16,10 +16,13 @@ if [ "$1" == "backend" ]; then
 elif [ "$1" == "frontend" ]; then
   echo "Starting frontend app..."
   cd frontend
-  # Get the GitPod URL for the backend and save as an environment variable
+  # Get the GitPod URL for the backend, for API requests
   gp env VITE_BACKEND_URL=$(gp url 8000)
+  # Get the GitPod URL for the frontend, for hot module reloading
+  gp env VITE_FRONTEND_URL=$(gp url 3000)
   eval $(gp env -e)
   echo "VITE_BACKEND_URL=$VITE_BACKEND_URL" > .env
+  echo "VITE_FRONTEND_URL=$VITE_FRONTEND_URL" >> .env
   # Run the frontend in development mode
   npm run dev
 

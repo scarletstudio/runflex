@@ -13,10 +13,13 @@ ports:
 tasks:
   - name: Frontend
     init: ./run.sh install-frontend
-    command: ./run.sh frontend
+    command: |
+      source .bash_aliases
+      ./run.sh frontend
     openMode: split-right
   - name: Backend
     command: |
+      source .bash_aliases
       ./run.sh install-backend
       ./run.sh backend
     openMode: split-left
