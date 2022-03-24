@@ -1,3 +1,41 @@
-.AllRuns .RunItem {
-  margin: 1em 0;
+.AllRunsPage {
+  --card-margin: 0.5em;
+}
+
+.AllRunsPage h1 {
+  margin-bottom: 0;
+}
+
+.AllRunsPage .Page {
+  padding-bottom: 1em;
+}
+
+.RunItemContainer {
+  font-size: var(--font-size);
+  padding: var(--card-margin);
+  padding-top: 0;
+}
+
+.RunItem {
+  display: inline-block;
+  text-decoration: none;
+  width: calc(100% - (6 * var(--card-margin)));
+  padding: calc(2 * var(--card-margin));
+  margin: var(--card-margin);
+  border-radius: var(--card-margin);
+}
+
+.RunItem .Title,
+.RunItem .Subtitle {
+  display: block;
+}
+
+.RunItem .Title {
+  font-weight: bold;
+  font-size: 1.25em;
+  margin-bottom: 0.25em;;
+}
+
+.RunItem .IconGo {
+  float: right;
 }

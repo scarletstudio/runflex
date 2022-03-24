@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 
+// Data Fetching
+
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 export function useRawFetchJson({
@@ -21,4 +23,19 @@ export function useBackendFetchJson({ route, ...args }) {
     url: `${BACKEND_URL}${route}`,
     ...args,
   })
+}
+
+// Formatting
+
+const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+})
+
+export function formatRunDateTime(ts) {
+  return ts && dateTimeFormat.format(new Date(ts))
 }

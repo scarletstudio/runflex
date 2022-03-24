@@ -1,20 +1,9 @@
 import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft as iconBack } from '@fortawesome/free-solid-svg-icons'
-import { useBackendFetchJson } from '../common/utils'
+import { useBackendFetchJson, formatRunDateTime } from '../common/utils'
 import RunMap from '../common/RunMap'
 import '../styles/RunPage.css'
-
-const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
-  weekday: 'long',
-  month: 'long',
-  day: 'numeric',
-  year: 'numeric',
-  hour: 'numeric',
-  minute: 'numeric',
-})
-
-const formatDateTime = (ts) => ts && dateTimeFormat.format(new Date(ts))
 
 function MetricCard(props) {
   const { title, value, units } = props
@@ -43,12 +32,12 @@ function RunDetails(props) {
   const { success, location, start_time: startTime } = props
   return (
     <div className="RunDetails Page Content">
-      <Link to="/runs" className="LinkWithIcon">
-        <FontAwesomeIcon icon={iconBack} />
+      <Link to="/runs" className="NoDecorate">
+        <FontAwesomeIcon icon={iconBack} className="IconBefore" />
         <span>Back to My Runs</span>
       </Link>
       <h1>{location || 'Run'}</h1>
-      <p>{formatDateTime(startTime)}</p>
+      <p>{formatRunDateTime(startTime)}</p>
       {success || <p>Loading...</p>}
     </div>
   )

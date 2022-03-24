@@ -55,11 +55,15 @@ h2:first-child {
   margin-top: 0;
 }
 
-.LinkWithIcon svg {
+.IconAfter {
+  margin-left: 0.5em;
+}
+
+.IconBefore {
   margin-right: 0.5em;
 }
 
-.LinkWithIcon {
+.NoDecorate {
   text-decoration: none;
 }
 

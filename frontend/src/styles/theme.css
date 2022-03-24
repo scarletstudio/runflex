@@ -52,6 +52,21 @@
   border: none;
 }
 
+/* Dark Theme: All Runs Page */
+
+.ThemeDark .RunItem {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+}
+
+.ThemeDark .RunItem:hover {
+  border: 1px solid var(--color-main);
+}
+
+.ThemeDark .RunItem:hover .IconGo {
+  color: var(--color-main);
+}
+
 /* Dark Theme: Run Page */
 
 .ThemeDark .RunPage .RunPathPolyline {

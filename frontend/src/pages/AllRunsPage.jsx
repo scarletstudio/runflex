@@ -1,30 +1,19 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronRight as iconGo } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom"
-import { useBackendFetchJson } from '../common/utils'
+import { useBackendFetchJson, formatRunDateTime } from '../common/utils'
 import '../styles/AllRunsPage.css'
 
 const RUNNER_ID = '114650'
 
 function RunItem({ data }) {
-  const { id, location } = data
+  const { id, location, start_time: startTime } = data
   return (
-    <div className="RunItem">
-      <p>
-        <Link to={`/runs/${id}`}>{location}</Link>
-      </p>
-    </div>
-  )
-}
-
-function AllRuns({ data }) {
-  return (
-    <div className="AllRuns">
-      <h1>My Runs</h1>
-      <>
-        {data.map((runData) => (
-          <RunItem key={runData.id} data={runData} />
-        ))}
-      </>
-    </div>
+    <Link to={`/runs/${id}`} className="RunItem Content">
+        <FontAwesomeIcon icon={iconGo} className="IconGo" />
+        <span className="Title">{location}</span>
+        <span className="Subtitle">{formatRunDateTime(startTime)}</span>
+    </Link>
   )
 }
 
@@ -32,9 +21,17 @@ export default function AllRunsPage() {
   const res = useBackendFetchJson({
     route: `/all_runs/${RUNNER_ID}`
   })
+  const runs = res?.runs || []
   return (
-    <div className="AllRunsPage Page Content">
-      <AllRuns data={res?.runs || []} />
+    <div className="AllRunsPage">
+      <div className="Content Page">
+        <h1>My Runs</h1>
+      </div>
+      <div className="RunItemContainer">
+        {runs.map((runData) => (
+          <RunItem key={runData.id} data={runData} />
+        ))}
+      </div>
     </div>
   )
 }
