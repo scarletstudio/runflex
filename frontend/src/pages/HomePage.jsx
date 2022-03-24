@@ -6,9 +6,7 @@ export default function HomePage() {
     <div className="HomePage Page Content">
       <h1>RunFlex</h1>
       <p>An app for runners to track and share their achievements.</p>
-      <p>
-        <Link to="/runs">My Runs</Link>
-      </p>
+        <Link to="/runs" className="Button Primary">My Runs</Link>
     </div>
   )
 }

@@ -1,3 +1,5 @@
+/* Typography */
+
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;400;700&display=swap');
 
 body {
@@ -55,6 +57,12 @@ h2:first-child {
   margin-top: 0;
 }
 
+.NoDecorate {
+  text-decoration: none;
+}
+
+/* Icons */
+
 .IconAfter {
   margin-left: 0.5em;
 }
@@ -63,8 +71,14 @@ h2:first-child {
   margin-right: 0.5em;
 }
 
-.NoDecorate {
+/* Buttons */
+
+.Button {
+  display: inline-block;
   text-decoration: none;
+  padding: 0.5em;
+  margin: 0.25em 0;
+  border-radius: 0.25em;;
 }
 
 /*

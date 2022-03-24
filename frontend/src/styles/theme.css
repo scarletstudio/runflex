@@ -33,6 +33,18 @@ a:hover {
   color: var(--color-main);
 }
 
+/* Dark Theme: Buttons */
+
+.ThemeDark .Button.Primary {
+  background: var(--color-main);
+  border: 1px solid transparent;
+}
+
+.ThemeDark .Button.Primary:hover {
+  background: transparent;
+  border: 1px solid var(--color-main);
+}
+
 /* Dark Theme: Maps */
 
 .ThemeDark .leaflet-control-attribution {
@@ -61,6 +73,7 @@ a:hover {
 
 .ThemeDark .RunItem:hover {
   border: 1px solid var(--color-main);
+  color: white;
 }
 
 .ThemeDark .RunItem:hover .IconGo {
