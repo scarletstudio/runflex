@@ -2,3 +2,7 @@
   width: 100%;
   height: 300px;
 }
+
+.RunPage .RunPathPolyline {
+  stroke: rgb(198, 224, 83);
+}

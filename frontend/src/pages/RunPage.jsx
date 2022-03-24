@@ -1,12 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useBackendFetchJson } from '../common/utils'
 import RunMap from '../common/RunMap'
-import mockPath from '../common/mock-path'
 import '../styles/RunPage.css'
-
-const PATH_OPTIONS = {
-  color: 'black'
-}
 
 export default function RunPage() {
   const { runId } = useParams()
@@ -23,16 +18,14 @@ export default function RunPage() {
     route: `/run/${runId}`,
     deps: [runId],
   })
-  const runMapComponent = res?.tracks
-    ? (
-      <RunMap key={runId} path={res?.tracks || []} pathOptions={PATH_OPTIONS} />
-    ) : null
-  
+  const runMapComponent = (
+    <RunMap path={res?.tracks || []} />
+  )
   return (
     <div className="RunPage Page">
       <h2>Runs</h2>
       <p>Run ID: {res?.id}</p>
-      {runMapComponent}
+      {res?.tracks && runMapComponent}
     </div>
   )
 }

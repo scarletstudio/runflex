@@ -1,8 +1,12 @@
-import { MapContainer, TileLayer, Polyline } from 'react-leaflet'
+import { MapContainer, TileLayer, Polyline, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 
 const ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`
-const TILE = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
+
+const TILES = {
+  OSM_HUMANITARIAN: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+  ESRI_DARK_GRAY: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+}
 
 function choose(compare, prev, curr) {
   return prev ? compare(prev, curr) : curr
@@ -29,15 +33,27 @@ const getPositions = (path) => path.map(({ latitude, longitude }) => (
   [latitude, longitude]
 ))
 
-export default function RunMap(props) {
+function RunPathPolyline(props) {
   const { path, pathOptions } = props
   const bounds = getBounds(path)
   const positions = getPositions(path)
+  const map = useMap()
+  map.fitBounds(bounds)
+  return (
+    <Polyline
+      className="RunPathPolyline"
+      positions={positions}
+      pathOptions={pathOptions}
+    />
+  )
+}
+
+export default function RunMap(props) {
   return (
     <div className="RunMap">
-      <MapContainer bounds={bounds}>
-        <TileLayer attribution={ATTRIBUTION} url={TILE} />
-        <Polyline positions={positions} pathOptions={pathOptions} />
+      <MapContainer>
+        <TileLayer attribution={ATTRIBUTION} url={TILES.ESRI_DARK_GRAY} />
+        <RunPathPolyline {...props} />
       </MapContainer>
     </div>
   )
