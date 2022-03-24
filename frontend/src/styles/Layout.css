@@ -7,35 +7,5 @@
 
 .Page {
   padding: 1em;
-}
-
-.SidePanel, .MainPanel {
-  display: inline-block;
-  vertical-align: top;
   font-size: var(--font-size);
-  /* Fill only the height left after the nav */
-  height: calc(100vh - var(--nav-total-height));
-  overflow-y: scroll;
-}
-
-.SidePanel {
-  width: 10%;
-}
-
-.SidePanel + .MainPanel {
-  width: 90%;
-}
-
-/*
- * Hide scrollbar, but allow scrolling
- * https://blog.hubspot.com/website/hide-scrollbar-css
- */
-
-.SidePanel {
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-}
-
-.SidePanel::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
 }

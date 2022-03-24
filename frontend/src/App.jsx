@@ -12,8 +12,8 @@ function App() {
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="/" element={<Layout />}>
-            <Route path="runs" element={<AllRunsPage />}>
-              <Route index element={<RunPage />} />
+            <Route path="runs">
+              <Route index element={<AllRunsPage />} />
               <Route path=":runId" element={<RunPage />} />
             </Route>
             <Route path="status" element={<StatusPage />} />
