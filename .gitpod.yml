@@ -28,12 +28,11 @@ tasks:
       ./run.sh frontend
     openMode: split-right
   - name: Backend
-    before: |
+    command: |
+      source .bash_aliases
       ./run.sh install-backend
       ./run.sh manage migrate
       ./run.sh manage load
-    command: |
-      source .bash_aliases
       ./run.sh backend
     openMode: split-left
   - name: Terminal
