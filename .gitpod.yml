@@ -11,6 +11,8 @@ github:
     addCheck: true
     addComment: true
     addBadge: false
+image:
+  file: .gitpod.Dockerfile
 ports:
   - name: Frontend
     port: 3000
@@ -22,20 +24,10 @@ ports:
     visibility: public
 tasks:
   - name: Frontend
-    init: ./run.sh install-frontend
-    command: |
-      source .bash_aliases
-      ./run.sh frontend
+    command: ./run.sh frontend
     openMode: split-right
   - name: Backend
-    command: |
-      source .bash_aliases
-      ./run.sh install-backend
-      ./run.sh manage migrate
-      ./run.sh manage load
-      ./run.sh backend
+    command: ./run.sh backend
     openMode: split-left
   - name: Terminal
-    command: |
-      cat .bash_aliases >> ~/.bashrc
-      source ~/.bashrc
+    command: echo "Welcome to RunFlex."
