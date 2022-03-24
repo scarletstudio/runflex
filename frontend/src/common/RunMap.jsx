@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'
 const ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`
 
 // Source: http://alexurquhart.github.io/free-tiles/
-const TILES = {
+export const TILES = {
   OSM_HUMANITARIAN: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
   ESRI_DARK_GRAY: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
 }
@@ -49,11 +49,12 @@ function RunPathPolyline(props) {
   )
 }
 
-export default function RunMap(props) {
+export function RunMap(props) {
+  const { tile } = props
   return (
     <div className="RunMap">
       <MapContainer>
-        <TileLayer attribution={ATTRIBUTION} url={TILES.ESRI_DARK_GRAY} />
+        <TileLayer attribution={ATTRIBUTION} url={tile} />
         <RunPathPolyline {...props} />
       </MapContainer>
     </div>

@@ -1,7 +1,6 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faArrowLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons'
-import { useEffect } from 'react';
+import { useState, useContext, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ThemeContext } from './common/context'
 import AllRunsPage from './pages/AllRunsPage'
 import HomePage from './pages/HomePage'
 import Layout from './pages/Layout'
@@ -9,18 +8,12 @@ import LeaderboardPage from './pages/LeaderboardPage'
 import RunPage from './pages/RunPage'
 import StatusPage from './pages/StatusPage'
 
-const registeredIcons = [
-  faArrowLeft,
-  faChevronRight,
-]
-
-function App() {
+function AppInner() {
+  const { theme } = useContext(ThemeContext)
   useEffect(() => {
-    // Set dark theme in body CSS
-    document.body.classList.add('ThemeDark')
-    // Register icons in library
-    library.add(registeredIcons)
-  }, [])
+    document.body.classList.remove(...document.body.classList)
+    document.body.classList.add(theme)
+  }, [theme])
   return (
     <div className="App">
       <BrowserRouter>
@@ -40,4 +33,11 @@ function App() {
   )
 }
 
-export default App
+export default function App() {
+  const [ theme, setTheme ] = useState('ThemeDark')
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <AppInner />
+    </ThemeContext.Provider>
+  )
+}

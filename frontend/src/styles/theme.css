@@ -1,99 +1,118 @@
-/* Dark Theme */
+/* Colors */
+
+.ThemeLight {
+  --color-main: rgb(224, 83, 153);
+  --color-background: white;
+  --color-semi-transparent: rgb(255, 241, 248);
+  --color-text: rgb(44, 44, 44);
+  --color-contrast: white;
+}
 
 .ThemeDark {
-  background: var(--color-darkest);
-  color: white;
+  --color-main: rgb(224, 83, 153);
+  --color-background: rgb(28, 27, 31);
+  --color-semi-transparent: rgba(255, 255, 255, 0.05);
+  --color-text: white;
+  --color-contrast: white;
 }
 
-.ThemeDark h1 {
+body {
+  background: var(--color-background);
+  color: var(--color-text);
+}
+
+h1 {
   color: var(--color-main);
 }
 
-.ThemeDark a {
-  color: white;
+a {
+  color: var(--color-text);
 }
 
-/* Dark Theme: Nav */
+/* Nav */
 
-.ThemeDark .Nav {
-  background: var(--color-darkest);
+.Nav {
+  background: var(--color-background);
 }
 
-.ThemeDark .Nav .CurrentPage {
-  color: white;
+.Nav .CurrentPage {
+  color: var(--color-text);
 }
 
-.ThemeDark .Nav a {
+.Nav a {
   color: var(--color-main);
 }
 
-.ThemeDark .Nav a:hover {
-  color: white;
+.Nav a:hover {
+  color: var(--color-text);
 }
 
-/* Dark Theme: Links */
+/* Links */
 
 a:hover {
   color: var(--color-main);
 }
 
-/* Dark Theme: Buttons */
+/* Buttons */
 
-.ThemeDark .Button.Primary {
+.Button.Primary {
   background: var(--color-main);
   border: 1px solid transparent;
+  color: var(--color-contrast);
 }
 
-.ThemeDark .Button.Primary:hover {
+.Button.Primary:hover {
   background: transparent;
   border: 1px solid var(--color-main);
-}
-
-/* Dark Theme: Maps */
-
-.ThemeDark .leaflet-control-attribution {
-  background: transparent;
-}
-
-.ThemeDark .leaflet-control-attribution,
-.ThemeDark .leaflet-control-attribution a {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.ThemeDark .leaflet-control-zoom-in,
-.ThemeDark .leaflet-control-zoom-out {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--color-darkest);
-  border: none;
-}
-
-/* Dark Theme: All Runs Page */
-
-.ThemeDark .RunItem {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid transparent;
-}
-
-.ThemeDark .RunItem:hover {
-  border: 1px solid var(--color-main);
-  color: white;
-}
-
-.ThemeDark .RunItem:hover .IconGo {
   color: var(--color-main);
 }
 
-/* Dark Theme: Run Page */
+/* Maps */
 
-.ThemeDark .RunPage .RunPathPolyline {
+.leaflet-control-attribution {
+  background: transparent;
+}
+
+.leaflet-control-attribution {
+  background: transparent;
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background: var(--color-text);
+  color: var(--color-background);
+  border: none;
+  opacity: 0.25;
+}
+
+/* All Runs Page */
+
+.RunItem {
+  background: var(--color-semi-transparent);
+  border: 1px solid transparent;
+}
+
+.RunItem:hover {
+  border: 1px solid var(--color-main);
+  color: var(--color-text);
+}
+
+.RunItem:hover .IconGo {
+  color: var(--color-main);
+}
+
+/* Run Page */
+
+.RunPage .RunPathPolyline {
   stroke: var(--color-main);
 }
 
-.ThemeDark .MetricCard {
-  background: rgba(255, 255, 255, 0.05);
+.MetricCard {
+  background: var(--color-semi-transparent);
 }
 
-.ThemeDark .MetricCard .ValueContainer {
+.MetricCard .ValueContainer {
   color: var(--color-main);
 }

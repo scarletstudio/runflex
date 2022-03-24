@@ -24,10 +24,11 @@ export default function Nav() {
   const { pathname } = useLocation()
   return (
     <div className="Nav">
-      {navigation.map(({ route, name }) => (
+      {navigation.map(({ route, name }, i) => (
         <Link
+          key={i}
           to={route}
-          className={pathname === route && 'CurrentPage'}
+          className={pathname === route ? 'CurrentPage' : ''}
         >
           {name}
         </Link>

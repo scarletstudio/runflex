@@ -1,8 +1,10 @@
-import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft as iconBack } from '@fortawesome/free-solid-svg-icons'
+import { useContext } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { RunMap } from '../common/RunMap'
+import { ThemeContext } from '../common/context'
+import { THEME_DETAIL } from '../common/theme'
 import { useBackendFetchJson, formatRunDateTime } from '../common/utils'
-import RunMap from '../common/RunMap'
 import '../styles/RunPage.css'
 
 function MetricCard(props) {
@@ -21,8 +23,8 @@ function MetricCard(props) {
 function RunMetrics({ metrics = [] }) {
   return (
     <div className="RunMetrics">
-      {metrics.map((card) => (
-        <MetricCard {...card} />
+      {metrics.map((card, i) => (
+        <MetricCard key={i} {...card} />
       ))}
     </div>
   )
@@ -33,7 +35,7 @@ function RunDetails(props) {
   return (
     <div className="RunDetails Page Content">
       <Link to="/runs" className="NoDecorate">
-        <FontAwesomeIcon icon={iconBack} className="IconBefore" />
+        <FontAwesomeIcon icon="arrow-left" className="IconBefore" />
         <span>Back to My Runs</span>
       </Link>
       <h1>{location || 'Run'}</h1>
@@ -49,9 +51,11 @@ export default function RunPage() {
     route: `/runs/${runId}`,
     deps: [runId],
   })
+  const { theme } = useContext(ThemeContext)
+  const tile = THEME_DETAIL?.[theme]?.tile
   return (
     <div className="RunPage">
-      <RunMap path={res?.tracks} />
+      <RunMap path={res?.tracks} tile={tile} />
       <RunDetails {...res} />
       <RunMetrics metrics={res?.metrics} />
     </div>
