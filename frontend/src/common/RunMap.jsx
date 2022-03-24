@@ -35,7 +35,7 @@ const getPositions = (path) => path.map(({ latitude, longitude }) => (
 ))
 
 function RunPathPolyline(props) {
-  const { path, pathOptions } = props
+  const { path = [], pathOptions } = props
   const bounds = getBounds(path)
   const positions = getPositions(path)
   const map = useMap()

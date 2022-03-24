@@ -12,10 +12,6 @@
   text-decoration: none;
 }
 
-.Nav a:hover {
-  text-decoration: dashed;
-}
-
 .Nav + .NavSpacer {
   height: calc(2 * var(--nav-height));
 }

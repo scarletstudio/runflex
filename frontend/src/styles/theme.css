@@ -13,6 +13,8 @@
   color: white;
 }
 
+/* Dark Theme: Nav */
+
 .ThemeDark .Nav {
   background: var(--color-darkest);
 }
@@ -21,8 +23,20 @@
   color: var(--color-main);
 }
 
+.ThemeDark .Nav a:hover {
+  color: white;
+}
+
+/* Dark Theme: Links */
+
+.LinkWithIcon:hover {
+  color: var(--color-main);
+}
+
+/* Dark Theme: Maps */
+
 .ThemeDark .leaflet-container a {
-  color: black;
+  color: var(--color-darkest);
 }
 
 .ThemeDark .leaflet-container .leaflet-control-attribution {
@@ -33,4 +47,18 @@
 .ThemeDark .leaflet-container .leaflet-control-attribution a {
   background: transparent;
   color: rgba(255, 255, 255, 0.25);
+}
+
+/* Dark Theme: Run Page */
+
+.ThemeDark .RunPage .RunPathPolyline {
+  stroke: var(--color-main);
+}
+
+.ThemeDark .MetricCard {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ThemeDark .MetricCard .ValueContainer {
+  color: var(--color-main);
 }

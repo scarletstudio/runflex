@@ -56,6 +56,14 @@ h2:first-child {
   margin-top: 0;
 }
 
+.LinkWithIcon svg {
+  margin-right: 0.5em;
+}
+
+.LinkWithIcon {
+  text-decoration: none;
+}
+
 /*
  * Hide scrollbar, but allow scrolling
  * https://blog.hubspot.com/website/hide-scrollbar-css

@@ -1,4 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft as iconBack } from '@fortawesome/free-solid-svg-icons'
 import { useBackendFetchJson } from '../common/utils'
 import RunMap from '../common/RunMap'
 import '../styles/RunPage.css'
@@ -7,7 +9,6 @@ function MetricCard(props) {
   const { title, value, units } = props
   return (
     <div className="MetricCard Content">
-      
       <span className="ValueContainer">
         <span className="Value">{value}</span>
         <span className="Units">{units}</span>
@@ -17,12 +18,28 @@ function MetricCard(props) {
   )
 }
 
-function RunMetrics({ metrics }) {
+function RunMetrics({ metrics = [] }) {
   return (
     <div className="RunMetrics">
       {metrics.map((card) => (
         <MetricCard {...card} />
       ))}
+    </div>
+  )
+}
+
+function RunDetails(props) {
+  const { success, location } = props
+  return (
+    <div className="RunDetails Page Content">
+      <h1>{location || 'Run'}</h1>
+      <p>
+        <Link to="/runs" className="LinkWithIcon">
+          <FontAwesomeIcon icon={iconBack} />
+          <span>Back to My Runs</span>
+        </Link>
+      </p>
+      {success || <p>Loading...</p>}
     </div>
   )
 }
@@ -33,23 +50,11 @@ export default function RunPage() {
     route: `/runs/${runId}`,
     deps: [runId],
   })
-  const isLoaded = runId && res?.success
-  const runMapComponent = <RunMap path={res?.tracks || []} />
-  const runMetricsComponent = <RunMetrics metrics={res?.metrics || []} />
-  return isLoaded ? (
+  return (
     <div className="RunPage">
-      {res?.tracks && runMapComponent}
-      <div className="Page Content">
-        <h1>{res?.location || 'Run'}</h1>
-        <p>
-          <Link to="/runs">Back to My Runs</Link>
-        </p>
-      </div>
-      {res?.metrics && runMetricsComponent}
-    </div>
-  ) : (
-    <div className="RunPage Page Content">
-      <p>Loading...</p>
+      <RunMap path={res?.tracks} />
+      <RunDetails {...res} />
+      <RunMetrics metrics={res?.metrics} />
     </div>
   )
 }

@@ -7,8 +7,8 @@
   height: 35vh;
 }
 
-.RunPage .RunPathPolyline {
-  stroke: var(--color-main);
+.RunDetails {
+  padding-bottom: 0.5em;
 }
 
 .RunMetrics {
@@ -20,7 +20,6 @@
 .MetricCard {
   display: inline-block;
   vertical-align: top;
-  background: rgba(255, 255, 255, 0.05);
   padding: calc(2 * var(--card-margin));
   margin: var(--card-margin);
   width: calc(50% - (6 * var(--card-margin)));
@@ -35,10 +34,6 @@
 
 .MetricCard .Title {
   margin-top: 0.5em;
-}
-
-.MetricCard .ValueContainer {
-  color: var(--color-main);
 }
 
 .MetricCard .Value {
