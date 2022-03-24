@@ -2,5 +2,5 @@ FROM gitpod/workspace-full
 
 USER gitpod
 
-COPY gitpod/backend/requirements.txt /
-RUN pip3 install -r backend/requirements.txt
+COPY backend/requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
