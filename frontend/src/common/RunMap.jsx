@@ -3,6 +3,7 @@ import 'leaflet/dist/leaflet.css';
 
 const ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`
 
+// Source: http://alexurquhart.github.io/free-tiles/
 const TILES = {
   OSM_HUMANITARIAN: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
   ESRI_DARK_GRAY: 'https://services.arcgisonline.com/arcgis/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}',
