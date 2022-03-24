@@ -71,6 +71,34 @@ def runners_view(request, id: str):
   )
 
 
+def get_run_metrics():
+  """
+  Returns metrics for a run.
+  """
+  return [
+    {
+      "title": "Total Distance",
+      "value": "1.53",
+      "units": "mi",
+    },
+    {
+      "title": "Total Duration",
+      "value": "37",
+      "units": "mins"
+    },
+    {
+      "title": "Elevation Gain",
+      "value": "13",
+      "units": "ft",
+    },
+    {
+      "title": "% in Target Heart Rate",
+      "subtitle": "Time in Target Heart Rate Zone",
+      "value": "70%",
+    },
+  ]
+
+
 def runs_view(request, id: str):
   """
   Returns data about a run by ID.
@@ -87,6 +115,7 @@ def runs_view(request, id: str):
     {
       "success": True,
       **model_to_dict(run),
+      "metrics": get_run_metrics(),
       "tracks": list(tracks),
     },
     json_dumps_params=dumps_params
