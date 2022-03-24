@@ -1,3 +1,10 @@
 .HomePage {
   --font-size: 18px;
 }
+
+.HomePage h1 {
+  color: var(--color-main);
+  font-size: 3.5em;
+  line-height: 1em;
+  margin: 0;
+}

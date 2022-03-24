@@ -33,7 +33,7 @@ export default function AllRunsPage() {
     route: `/all_runs/${RUNNER_ID}`
   })
   return (
-    <div className="AllRunsPage Page">
+    <div className="AllRunsPage Page Content">
       <AllRuns data={res?.runs || []} />
     </div>
   )

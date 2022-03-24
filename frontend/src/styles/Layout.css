@@ -3,9 +3,13 @@
   --nav-height: var(--font-size);
   --nav-padding: 0.5em;
   --nav-total-height: calc(var(--nav-height) + 2 * var(--nav-padding));
+  height: 100vh;
 }
 
 .Page {
-  padding: 1em;
+  padding: 1.5em;
+}
+
+.Content {
   font-size: var(--font-size);
 }

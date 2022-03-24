@@ -6,6 +6,7 @@ export default function Layout(props) {
   return (
     <div className="Layout">
       <Nav />
+      <div className="NavSpacer"></div>
       <Outlet />
     </div>
   )

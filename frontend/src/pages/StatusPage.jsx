@@ -5,7 +5,7 @@ export default function StatusPage() {
   const status = useBackendFetchJson({ route: '/status' })
 
   return (
-    <div className="StatusPage Page">
+    <div className="StatusPage Page Content">
       <h1>Status</h1>
       <p>What is the status of the backend?</p>
       <p>Let us check:</p>

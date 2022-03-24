@@ -1,0 +1,36 @@
+/* Dark Theme */
+
+.ThemeDark {
+  background: var(--color-dark);
+  color: white;
+}
+
+.ThemeDark h1 {
+  color: var(--color-main);
+}
+
+.ThemeDark a {
+  color: white;
+}
+
+.ThemeDark .Nav {
+  background: var(--color-darkest);
+}
+
+.ThemeDark .Nav a {
+  color: var(--color-main);
+}
+
+.ThemeDark .leaflet-container a {
+  color: black;
+}
+
+.ThemeDark .leaflet-container .leaflet-control-attribution {
+  background: transparent;
+}
+
+.ThemeDark .leaflet-container .leaflet-control-attribution,
+.ThemeDark .leaflet-container .leaflet-control-attribution a {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.25);
+}

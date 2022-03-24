@@ -87,14 +87,14 @@ def get_run_metrics():
       "units": "mins"
     },
     {
-      "title": "Elevation Gain",
+      "title": "Total Elevation Gain",
       "value": "13",
       "units": "ft",
     },
     {
-      "title": "% in Target Heart Rate",
-      "subtitle": "Time in Target Heart Rate Zone",
-      "value": "70%",
+      "title": "% Time in Target Heart Rate Zone",
+      "value": "70",
+      "units": "%",
     },
   ]
 

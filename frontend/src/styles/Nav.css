@@ -1,16 +1,21 @@
 .Nav {
-  background: black;
+  position: fixed;
+  width: 100vw;
   height: var(--nav-height);
   padding: var(--nav-padding);
   font-size: var(--nav-height);
+  text-align: center;
 }
 
 .Nav a {
-  margin: calc(var(--nav-padding) / 2);
-  color: white;
+  margin: var(--nav-padding);
   text-decoration: none;
 }
 
 .Nav a:hover {
   text-decoration: dashed;
+}
+
+.Nav + .NavSpacer {
+  height: calc(2 * var(--nav-height));
 }

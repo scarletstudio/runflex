@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout'
 import HomePage from './pages/HomePage'
@@ -6,6 +7,9 @@ import RunPage from './pages/RunPage'
 import StatusPage from './pages/StatusPage'
 
 function App() {
+  useEffect(() => {
+    document.body.classList.add('ThemeDark')
+  }, [])
   return (
     <div className="App">
       <BrowserRouter>
