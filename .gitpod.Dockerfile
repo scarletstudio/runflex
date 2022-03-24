@@ -9,4 +9,5 @@ COPY backend/requirements.txt requirements.txt
 RUN cat .bash_aliases >> ~/.bashrc \
     && . ~/.bashrc \
     && npm install -g \
+    && npm install -g vite \
     && pip3 install -r requirements.txt
