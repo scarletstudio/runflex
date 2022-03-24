@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft as iconBack } from '@fortawesome/free-solid-svg-icons'
 import { useBackendFetchJson, formatRunDateTime } from '../common/utils'

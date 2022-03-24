@@ -1,6 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronRight as iconGo } from '@fortawesome/free-solid-svg-icons'
-import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
 import { useBackendFetchJson, formatRunDateTime } from '../common/utils'
 import '../styles/AllRunsPage.css'
 
@@ -10,7 +9,7 @@ function RunItem({ data }) {
   const { id, location, start_time: startTime } = data
   return (
     <Link to={`/runs/${id}`} className="RunItem Content">
-        <FontAwesomeIcon icon={iconGo} className="IconGo" />
+        <FontAwesomeIcon icon="chevron-right" className="IconGo" />
         <span className="Title">{location}</span>
         <span className="Subtitle">{formatRunDateTime(startTime)}</span>
     </Link>

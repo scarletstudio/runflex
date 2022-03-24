@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Polyline, useMap } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css';
+import 'leaflet/dist/leaflet.css'
 
 const ATTRIBUTION = `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors`
 

@@ -29,7 +29,7 @@
 
 /* Dark Theme: Links */
 
-.LinkWithIcon:hover {
+a:hover {
   color: var(--color-main);
 }
 
