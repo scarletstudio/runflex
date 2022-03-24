@@ -1,6 +1,6 @@
-import { useState, useContext, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeContext } from './common/context'
+import { useThemeManager } from './common/theme'
 import AllRunsPage from './pages/AllRunsPage'
 import HomePage from './pages/HomePage'
 import Layout from './pages/Layout'
@@ -9,11 +9,6 @@ import RunPage from './pages/RunPage'
 import StatusPage from './pages/StatusPage'
 
 function AppInner() {
-  const { theme } = useContext(ThemeContext)
-  useEffect(() => {
-    document.body.classList.remove(...document.body.classList)
-    document.body.classList.add(theme)
-  }, [theme])
   return (
     <div className="App">
       <BrowserRouter>
@@ -34,9 +29,9 @@ function AppInner() {
 }
 
 export default function App() {
-  const [ theme, setTheme ] = useState('ThemeDark')
+  const themeManager = useThemeManager()
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={themeManager}>
       <AppInner />
     </ThemeContext.Provider>
   )
