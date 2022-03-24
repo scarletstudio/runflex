@@ -16,10 +16,12 @@ class Command(BaseCommand):
     """
 
     def clear_tables(self):
-        self.stdout.write("Clearing existing tables...")
+        self.stdout.write("Clearing existing tables...", ending="")
         Runner.objects.all().delete()
         Run.objects.all().delete()
         Track.objects.all().delete()
+        self.stdout.flush()
+        self.stdout.write(self.style.SUCCESS(" OK"))
 
     def handle_data(self, run_id, data):
         # Add Runner
@@ -40,7 +42,12 @@ class Command(BaseCommand):
         }
         Run(**run).save()
         # Add Tracks
+        n = len(data["path"])
         for i, point in enumerate(data["path"]):
+            if i % 10 == 0:
+                msg = f"\r Progress: {i}/{n}..."
+                self.stdout.write(msg, ending="")
+                self.stdout.flush()
             track_id = f"{i}".zfill(4)
             track = {
                 "id": f"{run_id}-{track_id}",
@@ -58,11 +65,11 @@ class Command(BaseCommand):
         self.clear_tables()
         files = os.listdir(DATA_PATH)
         for i, filename in enumerate(files):
-            msg = f"Reading file {i + 1}/{len(files)}..."
-            self.stdout.write(msg)
+            self.stdout.write(f"Reading file {i + 1}/{len(files)}.")
             file_path = f"{DATA_PATH}/{filename}"
             with open(file_path, "r") as file:
                 data = json.load(file)
                 run_id = filename.split(".")[0]
                 self.handle_data(run_id, data)
+                self.stdout.write(self.style.SUCCESS(" OK"))
         self.stdout.write(self.style.SUCCESS("Done."))
