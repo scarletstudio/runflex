@@ -19,6 +19,10 @@
   background: var(--color-darkest);
 }
 
+.ThemeDark .Nav .CurrentPage {
+  color: white;
+}
+
 .ThemeDark .Nav a {
   color: var(--color-main);
 }
