@@ -1,7 +1,7 @@
 /* Dark Theme */
 
 .ThemeDark {
-  background: var(--color-dark);
+  background: var(--color-darkest);
   color: white;
 }
 
@@ -35,18 +35,21 @@
 
 /* Dark Theme: Maps */
 
-.ThemeDark .leaflet-container a {
+.ThemeDark .leaflet-control-attribution {
+  background: transparent;
+}
+
+.ThemeDark .leaflet-control-attribution,
+.ThemeDark .leaflet-control-attribution a {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ThemeDark .leaflet-control-zoom-in,
+.ThemeDark .leaflet-control-zoom-out {
+  background: rgba(255, 255, 255, 0.15);
   color: var(--color-darkest);
-}
-
-.ThemeDark .leaflet-container .leaflet-control-attribution {
-  background: transparent;
-}
-
-.ThemeDark .leaflet-container .leaflet-control-attribution,
-.ThemeDark .leaflet-container .leaflet-control-attribution a {
-  background: transparent;
-  color: rgba(255, 255, 255, 0.25);
+  border: none;
 }
 
 /* Dark Theme: Run Page */

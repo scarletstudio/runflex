@@ -5,6 +5,17 @@ import { useBackendFetchJson } from '../common/utils'
 import RunMap from '../common/RunMap'
 import '../styles/RunPage.css'
 
+const dateTimeFormat = new Intl.DateTimeFormat('en-US', {
+  weekday: 'long',
+  month: 'long',
+  day: 'numeric',
+  year: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+})
+
+const formatDateTime = (ts) => ts && dateTimeFormat.format(new Date(ts))
+
 function MetricCard(props) {
   const { title, value, units } = props
   return (
@@ -29,16 +40,15 @@ function RunMetrics({ metrics = [] }) {
 }
 
 function RunDetails(props) {
-  const { success, location } = props
+  const { success, location, start_time: startTime } = props
   return (
     <div className="RunDetails Page Content">
+      <Link to="/runs" className="LinkWithIcon">
+        <FontAwesomeIcon icon={iconBack} />
+        <span>Back to My Runs</span>
+      </Link>
       <h1>{location || 'Run'}</h1>
-      <p>
-        <Link to="/runs" className="LinkWithIcon">
-          <FontAwesomeIcon icon={iconBack} />
-          <span>Back to My Runs</span>
-        </Link>
-      </p>
+      <p>{formatDateTime(startTime)}</p>
       {success || <p>Loading...</p>}
     </div>
   )
