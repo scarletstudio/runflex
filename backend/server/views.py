@@ -7,6 +7,13 @@ from core.models import Runner, Run, Track
 dumps_params = {
   "indent": 2,
 }
+# Subset of track columns to return in run view
+track_run_columns = [
+  "index",
+  "time",
+  "latitude",
+  "longitude",
+]
 
 
 def hello(request):
@@ -50,7 +57,7 @@ def all_runs_view(request, runner_id: str):
   )
 
 
-def runner_view(request, id: str):
+def runners_view(request, id: str):
   """
   Returns data about a runner by ID.
   """
@@ -64,30 +71,23 @@ def runner_view(request, id: str):
   )
 
 
-def shallow_track(track):
-  """
-  Returns only the fields of a track needed for the run view.
-  """
-  return {
-    "index": track.index,
-    "time": track.time,
-    "latitude": track.latitude,
-    "longitude": track.longitude,
-    "elevation": track.elevation,
-  }
-
-
-def run_view(request, id: str):
+def runs_view(request, id: str):
   """
   Returns data about a run by ID.
   """
   run = Run.objects.filter(id=id).get()
-  tracks = Track.objects.filter(run=id).all()
+  tracks = (
+    Track
+      .objects
+      .filter(run=id)
+      .values(*track_run_columns)
+      .all()
+  )
   return JsonResponse(
     {
       "success": True,
       **model_to_dict(run),
-      "tracks": [shallow_track(t) for t in tracks],
+      "tracks": list(tracks),
     },
     json_dumps_params=dumps_params
   )

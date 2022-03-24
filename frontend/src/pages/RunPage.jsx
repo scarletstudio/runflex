@@ -15,7 +15,7 @@ export default function RunPage() {
   }
 
   const res = useBackendFetchJson({
-    route: `/run/${runId}`,
+    route: `/runs/${runId}`,
     deps: [runId],
   })
   const runMapComponent = (
