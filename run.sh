@@ -48,6 +48,11 @@ elif [ "$1" == "api" ]; then
 
 elif [ "$1" == "manage" ]; then
   cd backend
+  # Set the Django secret key and save as an environment variable
+  gp env SECRET_KEY=$RANDOM
+  eval $(gp env -e)
+  echo "SECRET_KEY=$SECRET_KEY" > .env
+  # Run the Django management command with args
   python3 manage.py "${@:2}"
 
 else
