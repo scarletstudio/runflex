@@ -70,13 +70,13 @@ a:hover {
 /* Maps */
 
 .leaflet-control-attribution {
-  background: transparent;
+  background: transparent !important;
+  opacity: 0.5;
 }
 
-.leaflet-control-attribution {
-  background: transparent;
+.leaflet-control-attribution,
+.leaflet-control-attribution a {
   color: var(--color-text);
-  opacity: 0.5;
 }
 
 .leaflet-control-zoom-in,
