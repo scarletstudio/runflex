@@ -7,7 +7,7 @@ if [ "$1" == "backend" ]; then
   echo "Starting backend..."
   cd backend
   # Set the Django secret key and save as an environment variable
-  if [ command -v gp &> /dev/null ]; then
+  if command -v gp &> /dev/null; then
     gp env SECRET_KEY=$RANDOM
     eval $(gp env -e)
   else
@@ -23,7 +23,7 @@ elif [ "$1" == "frontend" ]; then
   cd frontend
   # Get the GitPod URL for the backend, for API requests
   # Get the GitPod URL for the frontend, for hot module reloading
-  if [ command -v gp &> /dev/null ]; then
+  if command -v gp &> /dev/null; then
     gp env VITE_BACKEND_URL=$(gp url 8000)
     gp env VITE_FRONTEND_URL=$(gp url 3000)
     eval $(gp env -e)
@@ -49,7 +49,7 @@ elif [ "$1" == "install-backend" ]; then
 
 elif [ "$1" == "ui" ]; then
   # Open the frontend in the GitPod preview window
-  if [ command -v gp &> /dev/null ]; then
+  if command -v gp &> /dev/null; then
     gp preview $(gp url 3000)
   else
     open "http://localhost:3000"
@@ -57,7 +57,7 @@ elif [ "$1" == "ui" ]; then
 
 elif [ "$1" == "api" ]; then
   # Open the backend in the GitPod preview window
-  if [ command -v gp &> /dev/null ]; then
+  if command -v gp &> /dev/null; then
     gp preview $(gp url 8000)
   else
     open "http://localhost:8000"
@@ -66,7 +66,7 @@ elif [ "$1" == "api" ]; then
 elif [ "$1" == "manage" ]; then
   cd backend
   # Set the Django secret key and save as an environment variable
-  if [ command -v gp &> /dev/null ]; then
+  if command -v gp &> /dev/null; then
     gp env SECRET_KEY=$RANDOM
     eval $(gp env -e)
   else
