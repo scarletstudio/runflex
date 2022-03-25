@@ -47,7 +47,14 @@ def all_runs_view(request, runner_id: str):
   """
   Returns all runs for a runner, up to a limit.
   """
-  runs = Run.objects.filter(runner=runner_id).all()[:100]
+  runs = (
+    Run
+      .objects
+      .filter(runner=runner_id)
+      .order_by("-start_time")
+      .all()
+      [:100]
+  )
   return JsonResponse(
     {
       "success": True,
