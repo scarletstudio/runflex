@@ -7,8 +7,12 @@ if [ "$1" == "backend" ]; then
   echo "Starting backend..."
   cd backend
   # Set the Django secret key and save as an environment variable
-  gp env SECRET_KEY=$RANDOM
-  eval $(gp env -e)
+  if [ command -v gp &> /dev/null ]; then
+    gp env SECRET_KEY=$RANDOM
+    eval $(gp env -e)
+  else
+    SECRET_KEY=$RANDOM
+  fi
   echo "SECRET_KEY=$SECRET_KEY" > .env
   # Run the backend in development mode
   python3 manage.py migrate
@@ -18,10 +22,15 @@ elif [ "$1" == "frontend" ]; then
   echo "Starting frontend app..."
   cd frontend
   # Get the GitPod URL for the backend, for API requests
-  gp env VITE_BACKEND_URL=$(gp url 8000)
   # Get the GitPod URL for the frontend, for hot module reloading
-  gp env VITE_FRONTEND_URL=$(gp url 3000)
-  eval $(gp env -e)
+  if [ command -v gp &> /dev/null ]; then
+    gp env VITE_BACKEND_URL=$(gp url 8000)
+    gp env VITE_FRONTEND_URL=$(gp url 3000)
+    eval $(gp env -e)
+  else
+    VITE_BACKEND_URL="http://localhost:8000"
+    VITE_FRONTEND_URL="http://localhost:3000"
+  fi
   echo "VITE_BACKEND_URL=$VITE_BACKEND_URL" > .env
   echo "VITE_FRONTEND_URL=$VITE_FRONTEND_URL" >> .env
   # Run the frontend in development mode
@@ -38,19 +47,31 @@ elif [ "$1" == "install-backend" ]; then
   # Install Python dependencies in workspace so that GitPod persists them
   pip3 install -r backend/requirements.txt
 
-elif [ "$1" == "preview" ]; then
+elif [ "$1" == "ui" ]; then
   # Open the frontend in the GitPod preview window
-  gp preview $(gp url 3000)
+  if [ command -v gp &> /dev/null ]; then
+    gp preview $(gp url 3000)
+  else
+    open "http://localhost:3000"
+  fi
 
 elif [ "$1" == "api" ]; then
   # Open the backend in the GitPod preview window
-  gp preview $(gp url 8000)
+  if [ command -v gp &> /dev/null ]; then
+    gp preview $(gp url 8000)
+  else
+    open "http://localhost:8000"
+  fi
 
 elif [ "$1" == "manage" ]; then
   cd backend
   # Set the Django secret key and save as an environment variable
-  gp env SECRET_KEY=$RANDOM
-  eval $(gp env -e)
+  if [ command -v gp &> /dev/null ]; then
+    gp env SECRET_KEY=$RANDOM
+    eval $(gp env -e)
+  else
+    SECRET_KEY=$RANDOM
+  fi
   echo "SECRET_KEY=$SECRET_KEY" > .env
   # Run the Django management command with args
   python3 manage.py "${@:2}"
