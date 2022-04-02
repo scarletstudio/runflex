@@ -17,3 +17,5 @@ An app for runners to track and share their achievements.
     - Python
     - Django
     - SQLite
+
+Data for runs generated from [Trail Router](https://trailrouter.com).
