@@ -77,22 +77,15 @@ def runs_view(request, id: str):
     """
     Returns data about a run by ID.
     """
-    run_result = Run.objects.filter(id=id).get()
-    track_results = (
-        Track.objects.filter(run=id)
-        .order_by("time")
-        .values(*track_run_columns)
-        .all()
-    )
-    run = model_to_dict(run_result)
-    tracks = list(track_results)
-    metrics = get_run_metrics(run, tracks)
+    run = Run.objects.filter(id=id).get()
+    tracks = Track.objects.filter(run=id).order_by("time").all()
+    metrics = get_run_metrics(run, list(tracks))
     return JsonResponse(
         {
             "success": True,
-            **run,
+            **model_to_dict(run),
             "metrics": metrics,
-            "tracks": tracks,
+            "tracks": list(tracks.values(*track_run_columns)),
         },
         json_dumps_params=dumps_params,
     )
