@@ -8,37 +8,64 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Run',
+            name="Run",
             fields=[
-                ('id', models.CharField(max_length=30, primary_key=True, serialize=False)),
-                ('runner', models.CharField(default='', max_length=30)),
-                ('location', models.CharField(blank=True, max_length=60, null=True)),
-                ('start_time', models.DateTimeField(blank=True, default=django.utils.timezone.now)),
+                (
+                    "id",
+                    models.CharField(
+                        max_length=30, primary_key=True, serialize=False
+                    ),
+                ),
+                ("runner", models.CharField(default="", max_length=30)),
+                (
+                    "location",
+                    models.CharField(blank=True, max_length=60, null=True),
+                ),
+                (
+                    "start_time",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Runner',
+            name="Runner",
             fields=[
-                ('id', models.CharField(max_length=30, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.CharField(
+                        max_length=30, primary_key=True, serialize=False
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.CreateModel(
-            name='Track',
+            name="Track",
             fields=[
-                ('id', models.CharField(max_length=30, primary_key=True, serialize=False)),
-                ('run', models.CharField(max_length=30)),
-                ('runner', models.CharField(max_length=30)),
-                ('index', models.IntegerField(default=0)),
-                ('time', models.DateTimeField(blank=True, default=django.utils.timezone.now)),
-                ('latitude', models.FloatField(blank=True, null=True)),
-                ('longitude', models.FloatField(blank=True, null=True)),
-                ('elevation', models.FloatField(blank=True, null=True)),
+                (
+                    "id",
+                    models.CharField(
+                        max_length=30, primary_key=True, serialize=False
+                    ),
+                ),
+                ("run", models.CharField(max_length=30)),
+                ("runner", models.CharField(max_length=30)),
+                ("index", models.IntegerField(default=0)),
+                (
+                    "time",
+                    models.DateTimeField(
+                        blank=True, default=django.utils.timezone.now
+                    ),
+                ),
+                ("latitude", models.FloatField(blank=True, null=True)),
+                ("longitude", models.FloatField(blank=True, null=True)),
+                ("elevation", models.FloatField(blank=True, null=True)),
             ],
         ),
     ]

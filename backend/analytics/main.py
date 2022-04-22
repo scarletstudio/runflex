@@ -10,38 +10,38 @@ from analytics.metrics.heart import get_target_heart_rate_time
 
 # This config defines all the metrics we display for each run.
 RUN_METRICS = [
-  {
-    "title": "Total Distance",
-    "units": "mi",
-    "compute": get_distance,
-  },
-  {
-    "title": "Total Duration",
-    "units": "mins",
-    "compute": get_duration,
-  },
-  {
-    "title": "Total Elevation Gain",
-    "units": "ft",
-    "compute": get_elevation_gain,
-  },
-  {
-    "title": "% Time in Target Heart Rate Zone",
-    "units": "%",
-    "compute": get_target_heart_rate_time,
-  },
+    {
+        "title": "Total Distance",
+        "units": "mi",
+        "compute": get_distance,
+    },
+    {
+        "title": "Total Duration",
+        "units": "mins",
+        "compute": get_duration,
+    },
+    {
+        "title": "Total Elevation Gain",
+        "units": "ft",
+        "compute": get_elevation_gain,
+    },
+    {
+        "title": "% Time in Target Heart Rate Zone",
+        "units": "%",
+        "compute": get_target_heart_rate_time,
+    },
 ]
 
 
 def get_run_metrics(run: Run, tracks: List[Track]) -> List[RunMetricResult]:
-  """
-  Returns metrics for a run.
-  """
-  return [
-    {
-      "title": metric["title"],
-      "units": metric["units"],
-      "value": metric["compute"](run, tracks),
-    }
-    for metric in RUN_METRICS
-  ]
+    """
+    Returns metrics for a run.
+    """
+    return [
+        {
+            "title": metric["title"],
+            "units": metric["units"],
+            "value": metric["compute"](run, tracks),
+        }
+        for metric in RUN_METRICS
+    ]

@@ -18,10 +18,10 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-  path("", views.hello),
-  path("status/", views.hello),
-  path("all_runners/", views.all_runners_view),
-  path("all_runs/<str:runner_id>/", views.all_runs_view),
-  path("runs/<str:id>/", views.runs_view),
-  path("runners/<str:id>/", views.runners_view),
+    path("", views.hello),
+    path("status/", views.hello),
+    path("all_runners/", views.all_runners_view),
+    path("all_runs/<str:runner_id>/", views.all_runs_view),
+    path("runs/<str:id>/", views.runs_view),
+    path("runners/<str:id>/", views.runners_view),
 ]

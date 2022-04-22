@@ -18,7 +18,7 @@ if [ "$1" == "backend" ]; then
   # Run the backend in development mode
   python3 manage.py migrate
   python3 manage.py runserver
-  
+
 elif [ "$1" == "frontend" ]; then
   echo "Starting frontend app..."
   cd frontend

@@ -36,7 +36,7 @@ class Command(BaseCommand):
             "id": run_id,
             "runner": runner_id,
             "location": data.tracks[0].name,
-            "start_time": data.time
+            "start_time": data.time,
         }
         Run(**run).save()
         # Add Tracks
