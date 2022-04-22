@@ -39,6 +39,7 @@ APPEND_SLASH = True
 # Application definition
 
 INSTALLED_APPS = [
+    "analytics.apps.AnalyticsConfig",
     "core.apps.CoreConfig",
     "django.contrib.admin",
     "django.contrib.auth",

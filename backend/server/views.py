@@ -1,6 +1,8 @@
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
+
 from core.models import Runner, Run, Track
+from analytics.main import get_run_metrics
 
 
 # Parameters for rendering JSON responses
@@ -13,6 +15,7 @@ track_run_columns = [
   "time",
   "latitude",
   "longitude",
+  "elevation",
 ]
 
 
@@ -78,52 +81,28 @@ def runners_view(request, id: str):
   )
 
 
-def get_run_metrics():
-  """
-  Returns metrics for a run.
-  """
-  return [
-    {
-      "title": "Total Distance",
-      "value": "1.53",
-      "units": "mi",
-    },
-    {
-      "title": "Total Duration",
-      "value": "37",
-      "units": "mins"
-    },
-    {
-      "title": "Total Elevation Gain",
-      "value": "13",
-      "units": "ft",
-    },
-    {
-      "title": "% Time in Target Heart Rate Zone",
-      "value": "70",
-      "units": "%",
-    },
-  ]
-
-
 def runs_view(request, id: str):
   """
   Returns data about a run by ID.
   """
-  run = Run.objects.filter(id=id).get()
-  tracks = (
+  run_result = Run.objects.filter(id=id).get()
+  track_results = (
     Track
       .objects
       .filter(run=id)
+      .order_by("time")
       .values(*track_run_columns)
       .all()
   )
+  run = model_to_dict(run_result)
+  tracks = list(track_results)
+  metrics = get_run_metrics(run, tracks)
   return JsonResponse(
     {
       "success": True,
-      **model_to_dict(run),
-      "metrics": get_run_metrics(),
-      "tracks": list(tracks),
+      **run,
+      "metrics": metrics,
+      "tracks": tracks,
     },
     json_dumps_params=dumps_params
   )
