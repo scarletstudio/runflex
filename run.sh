@@ -5,6 +5,7 @@ set -e
 
 if [ "$1" == "backend" ]; then
   echo "Starting backend..."
+  source .venv/bin/activate
   cd backend
   # Set the Django secret key and save as an environment variable
   if command -v gp &> /dev/null; then
@@ -44,8 +45,10 @@ elif [ "$1" == "install-frontend" ]; then
 
 elif [ "$1" == "install-backend" ]; then
   echo "Installing backend dependencies..."
+  python3 -m venv .venv
+  source .venv/bin/activate
   # Install Python dependencies in workspace so that GitPod persists them
-  pip3 install -r backend/requirements.txt
+  pip3 install -r requirements.txt
 
 elif [ "$1" == "ui" ]; then
   # Open the frontend in the GitPod preview window
@@ -56,6 +59,7 @@ elif [ "$1" == "ui" ]; then
   fi
 
 elif [ "$1" == "api" ]; then
+  source .venv/bin/activate
   # Open the backend in the GitPod preview window
   if command -v gp &> /dev/null; then
     gp preview $(gp url 8000)
@@ -64,6 +68,7 @@ elif [ "$1" == "api" ]; then
   fi
 
 elif [ "$1" == "manage" ]; then
+  source .venv/bin/activate
   cd backend
   # Set the Django secret key and save as an environment variable
   if command -v gp &> /dev/null; then
