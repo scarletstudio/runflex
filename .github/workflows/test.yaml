@@ -26,6 +26,7 @@ jobs:
 
       - name: Install and Test 🧪
         run: |
+          echo "SECRET_KEY=$RANDOM" > .env
           ./run.sh install-backend
           ./run.sh manage migrate
           ./run.sh manage test
