@@ -31,6 +31,7 @@ tasks:
     command: |
       source .bash_aliases
       ./run.sh install-backend
+      pre-commit install
       ./run.sh manage migrate
       ./run.sh manage load
       ./run.sh backend
