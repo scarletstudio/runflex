@@ -33,6 +33,7 @@ You can trace through the backend codebase in this order to understand how it is
 - The entrypoint for the backend API is `backend/server/urls.py`, which defines all the endpoints.
 - The endpoints process requests using the views defined in `backend/server/views.py`.
 - The views use data about runners, runs, and run tracking data, whose data models are defined in `backend/core/models.py`.
+- Raw run data is stored in the `data/runs/` folder in a format called GPX, then loaded into core data models for the API.
 - The view for an individual run returns metrics about that run, which are configured in `backend/analytics/main.py`.
 - Each metric is implemented in a file like `backend/analytics/metrics/elevation.py`.
 - Each metric has tests in a file like `backend/analytics/metrics/tests/test_elevation.py`.
